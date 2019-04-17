@@ -1,10 +1,13 @@
 <?php
-class VoitureException extends Exception {
-    private $allowedMark  = ['Renault', 'Audi', 'Peugeot'];
+class VoitureException extends Exception{
+
+    private $allowedMark = ['Renault', 'Nissan', 'Audi', 'BMW'];
 
     public function __construct(Voiture $voiture){
-        if(!in_array($voiture->getMark(), $this->allowedMark)){
-            throw new Exception('La voiture que vous voulez n\'est pas au catalogue', 400);
+        if(!in_array($voiture->getMarque(), $this->allowedMark)){
+            throw new Exception('La voiture '.$voiture->getMarque().' n\'est pas au catalogue',
+                400);
         }
     }
 }
+?>

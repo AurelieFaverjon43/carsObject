@@ -2,9 +2,9 @@
 class Audi extends Voiture implements AudiInterface {
     private $isQuatro;
 
-    public function __construct($marque, $model, $prix, $nbPortes, $clim, $siegeChauffant, $isQuatro)
+    public function __construct( $model, $prix, $nbPortes, $clim, $siegeChauffant, $isQuatro)
     {
-        parent::__construct($marque, $model, $prix, $nbPortes, $clim, $siegeChauffant);
+        parent::__construct('Audi', $model, $prix, $nbPortes, $clim, $siegeChauffant);
         $this->isQuatro = $isQuatro;
     }
 

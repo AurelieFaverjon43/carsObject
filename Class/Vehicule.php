@@ -1,10 +1,10 @@
 <?php
 
- abstract class Vehicule implements VehiculeInterface
+abstract class Vehicule implements VehiculeInterface
 {
-    protected $marque;
-    protected $model;
-    protected $prix;
+    private $marque;
+    private $model;
+    private $prix;
 
     public function __construct($marque, $model, $prix)
     {

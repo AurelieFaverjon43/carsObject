@@ -1,19 +1,31 @@
 <?php
-class Moto extends Vehicule implements MotoInterface {
+abstract class Moto extends Vehicule implements MotoInterface {
 
     private $topCase;
+    private $nbPlaces;
+    private $isJaponnaise;
 
-    public function __construct($marque, $model, $prix, $topCase)
+
+    public function __construct($marque, $model, $prix, $topCase, $isJaponnaise)
     {
         parent::__construct($marque, $model, $prix);
         $this->topCase = $topCase;
-        try{
+        $this->isJaponnaise = $isJaponnaise;
+        try {
             new MotoException($this);
-        } catch (Exception $e){
-            var_dump('Erreur : '. $e->getMessage(). 'détecté ligne'. $e->getLine().
-            ' Dans le fichier ' . $e->getFile() .' code d\'erreur: '.$e->getCode());
+        } catch (Exception $e) {
+            var_dump('Erreur : '. $e->getMessage(). ' détécté ligne'. $e->getLine().
+                ' Dans le fichier '.$e->getFile() .' code d\'erreur: '.$e->getCode());
             die();
         }
+    }
+
+    public function __set($name, $value){
+        echo("l'attribut n'existe pas ou est privé </br>");
+    }
+
+    public function __get($name){
+        echo("impossible d'afficher la valeur");
     }
 
     /**
@@ -47,9 +59,22 @@ class Moto extends Vehicule implements MotoInterface {
     {
         $this->nbPlaces = $nbPlaces;
     }
-    private $nbPlaces;
 
+    /**
+     * @return mixed
+     */
+    public function getIsJaponnaise()
+    {
+        return $this->isJaponnaise;
+    }
 
+    /**
+     * @param mixed $isJaponnaise
+     */
+    public function setIsJaponnaise($isJaponnaise)
+    {
+        $this->isJaponnaise = $isJaponnaise;
+    }
 
 }
 ?>

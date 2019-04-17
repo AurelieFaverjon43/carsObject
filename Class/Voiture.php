@@ -1,8 +1,8 @@
 <?php
- abstract class Voiture extends Vehicule {
-    protected $nbPortes;
-    protected $clim;
-    protected $siegeChauffant;
+abstract class Voiture extends Vehicule {
+    private $nbPortes;
+    private $clim;
+    private $siegeChauffant;
 
     public function __construct($marque, $model, $prix, $nbPortes, $clim, $siegeChauffant)
     {
@@ -10,6 +10,11 @@
         $this->nbPortes = $nbPortes;
         $this->clim = $clim;
         $this->siegeChauffant = $siegeChauffant;
+        try{
+            new VoitureException($this);
+        } catch (Exception $exception){
+            var_dump($exception->getMessage());
+        }
     }
 
     /**
